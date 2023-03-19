@@ -4,7 +4,7 @@ import Advice from "../components/Advice";
 function Home() {
   return (
     <div>
-      <Advice />
+      {/* <Advice /> */}
     </div>
   );
 }
