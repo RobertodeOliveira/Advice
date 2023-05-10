@@ -1,45 +1,26 @@
-import * as S from './styles'
+import  { api }  from '../../services/api'
+import {  useState } from 'react'
 
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-
-const api = axios.create({
-  baseURL: 'https://api.adviceslip.com/advice',
-})
 
 const Advice = () => {
 
-  console.log('====>', api)
-  // const [advice, setAdvice] = useState()
+  const [advice, setAdvice] = useState()
 
-  // const getAdvice = async () => {
-  //   try {
-  //     const response = await axios.get('https://api.adviceslip.com/advice')
-  //     const data = response.data.slip.advice
-  //     console.log(data)
+  api
+  .get('/advice')
+  .then((response) => setAdvice(response.data))
+  .catch((err) => {
+    console.error('ops! Ocorreu um error' + err)
+  })
 
-  //     setAdvice(data)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  
-  // useEffect(() => {
-  //   getAdvice()
-  // },[])
+  return (
+    <div>
+        <p>
+            {advice.slip}
+        </p>
+    </div>
+  )
 
-  // return (
-  //   <S.Container>
-  //     {advice.map((index: number) => 
-  //       <div className='post' key={index}>
-  //         <h1>{advice.slip.advice}</h1>
-  //       </div>
-  //     )}
-  //     <S.Wrapper> 
-  //       <S.Button />
-  //       </S.Wrapper>
-  //   </S.Container>
-  // )
 }
 
 export default Advice
