@@ -1,5 +1,5 @@
 
-import Advice from "../components/Advice";
+import { Advice } from '../components/Advice/index';
 
 function Home() {
   return (
@@ -9,4 +9,4 @@ function Home() {
   );
 }
 
-export default Home;
+export { Home };
